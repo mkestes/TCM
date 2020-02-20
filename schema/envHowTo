@@ -1,0 +1,10 @@
+envHowTo
+
+1. create a directory for project_name
+2. create virtual environment from virtualenv
+	$ python3 -m venv <name/of/envdir>
+
+
+command / = comment
+
+try catch for errors in a for loop

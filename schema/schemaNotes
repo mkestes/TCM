@@ -1,0 +1,113 @@
+Schema Notes:
+
+# example schema
+#
+#from mongothon import Schema
+
+#car_schema = Schema({
+#    "make":         {"type": basestring, "required": True},
+#    "model":        {"type": basestring, "required": True},
+#    "num_wheels":   {"type": int,        "default": 4, "validates": gte(0)}
+#    "color":        {"type": basestring, "validates": one_of("red", "green", "blue")}
+#})
+#
+# generate reusable model class from the schema and pymongo collection
+#
+#Car = create_model(car_schema, db['car'])
+#
+#
+# find, modify, and save a document
+#
+#car = Car.find_by_id(some_id)
+#car['color'] = "green"
+#car.save
+#
+#
+# create a new document
+#
+# car = Car({
+#    "make":     "Ford",
+#    "model":    "F-150",
+#    "color":    "red"
+#})
+#car.save()
+
+
+#
+# Types of types
+# Numbers, List, Tuple, Strings, Dictionary
+
+number = 80
+pi = 3.14
+name = "pynative.com"
+complexNum = 1+2j
+
+sampleList  = ["Eric", "Scott", "Kelly"]
+studentDict = {"John":80, "Eric":70, "Donald":90}
+sampleTuple = ("Sam","Developer", 10000)
+sampleSet   = {11, 22, 33, 44, 55}
+
+flag = isinstance(number, int)
+print(number,'is an instance of int?', flag)
+
+flag = isinstance(pi, float)
+print(pi,'is an instance of float?', flag)
+
+flag = isinstance(complexNum, complex)
+print(complexNum, "is an instance of a complex number?", flag)
+
+flag = isinstance(name, str)
+print(name,'is an instance of String?', flag, "\n")
+
+flag = isinstance(sampleList, list)
+print(sampleList,'is instance of list?', flag)
+
+flag = isinstance(studentDict, dict)
+print(studentDict,'is instance of Dictionary?', flag)
+
+flag = isinstance(sampleTuple, tuple)
+print(sampleList,'is instance of Tuple?', flag)
+
+flag = isinstance(sampleSet, set)
+print(studentDict,'is instance of Set?', flag)
+
+
+
+
+
+SHIPPED>DATA>SCHEMA:
+
+
+
+db.createCollection("data", {
+  validator: {
+        $and: [
+            {
+                "orderNo": {$type: "string", $exists: true}
+            },
+            {
+                "date": {$type: "string", $exists: true}
+            },
+            {
+                "accountFull": {$type: "string", $exists: true}
+            },
+            {
+            	"itemCode": {$type: "string", $exists: true}
+            },
+            {
+            	"qty": {$type: "int", $exists: true}
+            },
+            {
+            	"amount": {$type: "int", $exists: true}
+            }
+        ]
+    }
+})
+
+
+orderNo
+date
+accountFull
+itemCode
+qty
+amount
